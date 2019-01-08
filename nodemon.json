@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "actions",
+    "components",
+    "containers",
+    "pages",
+    "reducers",
+    "store",
+    "utils",
+    "constants"
+  ]
+}
