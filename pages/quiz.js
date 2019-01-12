@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Home from '../containers/home/Home';
+import Quiz from '../containers/quiz';
 import Layout from '../components/Layout';
 
 export default () => (
   <Layout>
-    <Home />
+    <Quiz />
   </Layout>
-)
+);

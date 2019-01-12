@@ -1,10 +1,16 @@
-import { GET_QUESTIONS, COMMIT_ANSWER } from '../constants';
+import {
+  GET_QUESTIONS,
+  COMMIT_ANSWER,
+  GET_RESULTS,
+  END_QUIZ
+} from '../constants';
 
 const initialState = {
   loading: true,
   questions: [],
   currentQuestionIndex: 0,
-  answers: []
+  answers: [],
+  results: null
 };
 
 export default function quizReducer(state = initialState, { type, payload }) {
@@ -20,6 +26,17 @@ export default function quizReducer(state = initialState, { type, payload }) {
         ...state,
         answers: [...state.answers, payload],
         currentQuestionIndex: state.currentQuestionIndex + 1
+      };
+    case END_QUIZ:
+      return {
+        ...state,
+        loading: true
+      };
+    case GET_RESULTS:
+      return {
+        ...state,
+        results: payload,
+        loading: false
       };
     default:
       return state;

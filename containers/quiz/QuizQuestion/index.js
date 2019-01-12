@@ -16,8 +16,8 @@ const QuizQuestion = ({ question, answerIndex, onAnswers }) => (
     <List dense>
       {_.map(question.options, (a, i) => (
         <ListItem
-          onClick={() => onAnswers(i, a)}
           button
+          onClick={() => onAnswers(a,i)}
           key={_.now() * Math.random()}
         >
           <Radio
