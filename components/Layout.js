@@ -9,7 +9,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import NoSsr from '@material-ui/core/NoSsr';
+import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -24,8 +24,12 @@ const styles = theme => ({
   toolbarTitle: {
     flex: 1
   },
+  toolbarLogo: {
+    marginRight: theme.spacing.unit * 2
+  },
   layout: {
     width: 'auto',
+    padding: theme.spacing.unit * 2,
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
@@ -84,69 +88,78 @@ function Pricing(props) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <NoSsr>
-        <AppBar position="static" color="default" className={classes.appBar}>
-          <Toolbar>
-            <Typography
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.toolbarTitle}
+      <AppBar position="static" color="default" className={classes.appBar}>
+        <Toolbar>
+          <Avatar src="/static/logo.png" alt="logo" className={classes.toolbarLogo}/>
+          <Typography
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.toolbarTitle}
+          >
+            TenderQuiz
+          </Typography>
+          <Link href="/">
+            <Button className={classes.buttonNav}>Головна</Button>
+          </Link>
+          <Link href="/tenders">
+            <Button className={classes.buttonNav}>Список тендерів</Button>
+          </Link>
+          <Link href="/quiz">
+            <Button className={classes.buttonNav}>Пройти тест</Button>
+          </Link>
+          <Link href="/about">
+            <Button className={classes.buttonNav}>Про нас</Button>
+          </Link>
+          <Link href="/support">
+            <Button className={classes.buttonNav}>Допомога</Button>
+          </Link>
+          <Link href="/signin">
+            <Button
+              className={classes.buttonNav}
+              color="primary"
+              variant="outlined"
             >
-              TenderQuiz
-            </Typography>
-            <Link href="/">
-              <Button className={classes.buttonNav}>Головна</Button>
-            </Link>
-            <Link href="/quiz">
-              <Button className={classes.buttonNav}>Пройти тест</Button>
-            </Link>
-            <Link href="/about">
-              <Button className={classes.buttonNav}>Про нас</Button>
-            </Link>
-            <Link href="/support">
-              <Button className={classes.buttonNav}>Допомога</Button>
-            </Link>
-            <Link href="/">
-              <Button
-                className={classes.buttonNav}
-                color="primary"
-                variant="outlined"
-              >
-                Login
-              </Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
-        <main className={classes.layout}>
-          {/* Hero unit */}
-          <div className={classes.heroContent}>
-            <div>{children}</div>
-          </div>
-          {/* End hero unit */}
-        </main>
-        {/* Footer */}
-        <footer className={classNames(classes.footer, classes.layout)}>
-          <Grid container spacing={32} justify="space-evenly">
-            {footers.map(footer => (
-              <Grid item xs key={footer.title}>
-                <Typography variant="h6" color="textPrimary" gutterBottom>
-                  {footer.title}
+              Sign in
+            </Button>
+          </Link>
+          <Link href="/registration">
+            <Button
+              className={classes.buttonNav}
+              color='secondary'
+              variant="outlined"
+            >
+              Registration
+            </Button>
+          </Link>
+        </Toolbar>
+      </AppBar>
+      <main className={classes.layout}>
+        {/* Hero unit */}
+        <div>{children}</div>
+        {/* End hero unit */}
+      </main>
+      {/* Footer */}
+      <footer className={classNames(classes.footer, classes.layout)}>
+        <Grid container spacing={32} justify="space-evenly">
+          {footers.map(footer => (
+            <Grid item xs key={footer.title}>
+              <Typography variant="h6" color="textPrimary" gutterBottom>
+                {footer.title}
+              </Typography>
+              {footer.description.map(item => (
+                <Typography
+                  key={item}
+                  variant="subtitle1"
+                  color="textSecondary"
+                >
+                  {item}
                 </Typography>
-                {footer.description.map(item => (
-                  <Typography
-                    key={item}
-                    variant="subtitle1"
-                    color="textSecondary"
-                  >
-                    {item}
-                  </Typography>
-                ))}
-              </Grid>
-            ))}
-          </Grid>
-        </footer>
-      </NoSsr>
+              ))}
+            </Grid>
+          ))}
+        </Grid>
+      </footer>
       {/* End footer */}
     </React.Fragment>
   );

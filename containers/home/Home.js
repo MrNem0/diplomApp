@@ -5,18 +5,16 @@ import { bindActionCreators } from 'redux';
 
 import { getPhotos } from '../../actions/PageActions';
 
-import Page from '../../components/Page';
-import User from '../../components/User';
+import IndexPage from '../../components/IndexPage';
 
 import style from './home.module.scss';
 
-const Home = ({ user, page, getPhoto }) => (
+const Home = ({ page, getPhoto }) => (
   <div className={style.app}>
     <header>
       <h1>Мой топ фото</h1>
     </header>
-    <User name={user.name} />
-    <Page
+    <IndexPage
       year={+page.year}
       photos={page.photos}
       getPhotos={getPhoto}

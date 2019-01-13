@@ -3,7 +3,7 @@ import { number, array, func, bool } from 'prop-types';
 
 import Button from '@material-ui/core/Button';
 
-const Page = ({ getPhotos, year, photos, isFetching }) => {
+const IndexPage = ({ getPhotos, year, photos, isFetching }) => {
   const onBtnClick = e => {
     const thisYear = e.target.textContent;
     getPhotos(thisYear);
@@ -33,11 +33,11 @@ const Page = ({ getPhotos, year, photos, isFetching }) => {
   );
 };
 
-Page.propTypes = {
+IndexPage.propTypes = {
   year: number.isRequired,
   photos: array.isRequired,
   getPhotos: func.isRequired,
   isFetching: bool.isRequired
 };
 
-export default Page;
+export default IndexPage;

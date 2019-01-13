@@ -48,7 +48,7 @@ class Quiz extends Component {
           direction="row"
           justify="center"
           alignItems="center"
-          style={{ minHeight: '85vh', width: '100%', display: 'flex' }}
+          style={{ minHeight: '85vh', width: '100%', display: 'flex', padding: '0 100px' }}
         >
           {loading ? (
             <CircularProgress />

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import SupportPage from '../components/SupportPage';
 import Layout from '../components/Layout';
+import SignInPage from '../components/SignInPage';
 
 export default () => (
   <Layout>
-    <SupportPage />
+    <SignInPage />
   </Layout>
 );

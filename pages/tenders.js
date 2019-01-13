@@ -1,10 +1,10 @@
 import React from 'react';
 
-import SupportPage from '../components/SupportPage';
 import Layout from '../components/Layout';
+import TenderList from '../components/TenderList';
 
 export default () => (
   <Layout>
-    <SupportPage />
+    <TenderList />
   </Layout>
 );
