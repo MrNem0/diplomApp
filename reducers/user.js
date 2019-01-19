@@ -1,7 +1,14 @@
-const initialState = {
-	name: 'Аноним',
-}
+import { REGISTRATION_USER } from '../constants';
 
-export function userReducer(state = initialState) {
-	return state
+const initialState = {
+  userInfo: []
+};
+
+export function userReducer(state = initialState, { type, payload }) {
+  switch (type) {
+    case REGISTRATION_USER:
+      return { ...state, userInfo: [...state.userInfo, payload] };
+    default:
+      return state;
+  }
 }

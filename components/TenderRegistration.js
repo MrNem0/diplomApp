@@ -13,7 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import asyncValidate from '../../utils/asyncValidate';
+import asyncValidate from '../utils/asyncValidate';
 
 const validate = values => {
   const errors = {};
@@ -104,7 +104,7 @@ const renderSelectField = ({
   </FormControl>
 );
 
-const RegistrationForm = props => {
+const TenderRegistrationForm = props => {
   const { handleSubmit, pristine, reset, submitting, classes } = props;
   return (
     <Paper style={{ padding: '20px' }}>
@@ -124,7 +124,7 @@ const RegistrationForm = props => {
               label="Last Name"
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={6}>
             <Field name="email" component={renderTextField} label="Email" />
           </Grid>
           <Grid item xs={6}>
@@ -178,7 +178,7 @@ const RegistrationForm = props => {
 };
 
 export default reduxForm({
-  form: 'RegistrationForm', // a unique identifier for this form
+  form: 'TenderRegistrationForm', // a unique identifier for this form
   validate,
   asyncValidate
-})(RegistrationForm);
+})(TenderRegistrationForm);

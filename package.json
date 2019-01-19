@@ -43,6 +43,7 @@
     "prop-types": "15.6.2",
     "react-google-charts": "3.0.10",
     "react-jss": "8.6.1",
+    "redux-form": "8.1.0",
     "redux-logger": "3.0.6",
     "redux-promise": "0.6.0"
   }

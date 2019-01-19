@@ -9,11 +9,12 @@ import Button from '@material-ui/core/Button';
 
 import { array, bool, number, func } from 'prop-types';
 import QuizQuestion from '../QuizQuestion';
+import Timer from '../../../components/Timer';
 
 export default class QuizApp extends Component {
   state = {
     answerIndex: undefined,
-    answer: 0
+    answer: 0,
   };
 
   handleAnswers = (answer, index) => {
@@ -68,6 +69,9 @@ export default class QuizApp extends Component {
           <Typography variant="subtitle1" color="textSecondary" align="center">
             {hasNextQuestion &&
               `Вопрос ${currentQuestionPosition} из ${numberOfQuestions}`}
+          </Typography>
+          <Typography variant="h5" component="h5" align="center">
+            <Timer />
           </Typography>
           <LinearProgress variant="determinate" value={progress} />
           {question && (

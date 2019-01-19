@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import { pageReducer } from './page';
+import { reducer as formReducer } from 'redux-form';
 import { userReducer } from './user';
+import tenderReducer from './tenders';
 import quizReducer from './quiz';
 
 const rootReducer = combineReducers({
-  page: pageReducer,
   user: userReducer,
-  quiz: quizReducer
+  quiz: quizReducer,
+  tenders: tenderReducer,
+  form: formReducer
 });
 
 export default rootReducer;

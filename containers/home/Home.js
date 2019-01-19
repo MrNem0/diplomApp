@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { array, func } from 'prop-types';
 import { bindActionCreators } from 'redux';
 
-import { getPhotos } from '../../actions/PageActions';
+import { getPhotos } from '../../actions/userActions';
 
 import IndexPage from '../../components/IndexPage';
 

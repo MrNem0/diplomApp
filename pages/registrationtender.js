@@ -3,21 +3,21 @@ import Router from 'next/router';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { registrationUser } from '../actions/userActions';
+import { commitTender } from '../actions/tenderActions';
 
 import Layout from '../components/Layout';
-import Registration from '../components/RegistrationPage';
+import TenderRegistration from '../components/TenderRegistration';
 
-const RegistrationPage = ({ registrationUser, form }) => {
+const TenderRegistrationPage = ({ commitTender, form }) => {
   const submit = e => {
     e.preventDefault();
-    registrationUser(form.RegistrationForm.values);
-    Router.replace('/');
+    commitTender(form.TenderRegistrationForm.values);
+    Router.replace('/tenders');
   };
 
   return (
     <Layout>
-      <Registration handleSubmit={submit} />
+      <TenderRegistration handleSubmit={submit} />
     </Layout>
   );
 };
@@ -27,10 +27,10 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  registrationUser: bindActionCreators(registrationUser, dispatch)
+  commitTender: bindActionCreators(commitTender, dispatch)
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RegistrationPage);
+)(TenderRegistrationPage);

@@ -82,6 +82,7 @@ const footers = [
   }
 ];
 
+
 function Pricing(props) {
   const { classes, children } = props;
 
@@ -90,7 +91,11 @@ function Pricing(props) {
       <CssBaseline />
       <AppBar position="static" color="default" className={classes.appBar}>
         <Toolbar>
-          <Avatar src="/static/logo.png" alt="logo" className={classes.toolbarLogo}/>
+          <Avatar
+            src="/static/logo.png"
+            alt="logo"
+            className={classes.toolbarLogo}
+          />
           <Typography
             variant="h6"
             color="inherit"
@@ -104,6 +109,9 @@ function Pricing(props) {
           </Link>
           <Link href="/tenders">
             <Button className={classes.buttonNav}>Список тендерів</Button>
+          </Link>
+          <Link href="/registrationtender">
+            <Button className={classes.buttonNav}>Регістрація тендеру</Button>
           </Link>
           <Link href="/quiz">
             <Button className={classes.buttonNav}>Пройти тест</Button>

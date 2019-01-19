@@ -1,10 +1,12 @@
 import React from 'react';
 
-import Home from '../containers/home/Home';
+//import Profile from '../components/ProfilePage/Profile';
 import Layout from '../components/Layout';
+import Timer from '../components/Timer';
 
 export default () => (
   <Layout>
-    <Home />
+    <div>Hello WORLD</div>
+    <Timer />
   </Layout>
 )
