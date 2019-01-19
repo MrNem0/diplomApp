@@ -8,28 +8,30 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Settings from '@material-ui/icons/Settings';
 import Exit from '@material-ui/icons/ExitToApp';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   card: {
     display: 'flex',
-    padding: theme.spacing.unit
+    padding: theme.spacing.unit,
+    backgroundColor: '#f5f5f5'
   },
   details: {
     display: 'flex',
     flexDirection: 'column',
   },
+  updateInfo: {
+  },
   content: {
     flex: '1 0 auto',
+  },
+  container: {
+    margin: theme.spacing.unit * 3
   },
   cover: {
     width: 200,
     height: 200
-  },
-  controls: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
   },
   rightIcon: {
     marginLeft: theme.spacing.unit,
@@ -40,7 +42,7 @@ const styles = theme => ({
   },
 });
 
-function MediaControlCard(props) {
+function Profile(props) {
   const { classes, theme } = props;
 
   return (
@@ -67,13 +69,40 @@ function MediaControlCard(props) {
           </Button>
         </CardContent>
       </div>
+      <Grid container spacing={24} justify="center" alignItems="center" className={classes.container}>
+        <Grid xs={6}>
+          <TextField label="First name" placeholder="First name" />
+        </Grid>
+        <Grid xs={6}>
+          <TextField label="Last name" placeholder="Last name" />
+        </Grid>
+        <Grid xs={6}>
+          <TextField label="Company" placeholder="Company" />
+        </Grid>
+        <Grid xs={6}>
+          <TextField label="County" placeholder="County" />
+        </Grid>
+        <Grid xs={6}>
+          <TextField label="Region" placeholder="Region" />
+        </Grid>
+        <Grid xs={6}>
+          <TextField label="Email address" placeholder="email address" />
+        </Grid>
+        <Button
+          fullWidth
+          variant="raised"
+          color="default"
+        >
+          Update
+        </Button>
+      </Grid>
     </Card>
   );
 }
 
-MediaControlCard.propTypes = {
+Profile.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(MediaControlCard);
+export default withStyles(styles, { withTheme: true })(Profile);
