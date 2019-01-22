@@ -1,8 +1,7 @@
-import { COMMIT_TENDER } from '../constants';
+import { GET_TENDER } from '../constants';
+import Axios from 'axios';
 
-export const commitTender = tenders => dispatch => {
-  dispatch({
-    type: COMMIT_TENDER,
-    payload: tenders
-  });
-};
+export const getTenders = () => dispatch => {
+  const res = Axios.get('/tender').then(r => r.data);
+  return res.then(data => dispatch({ type: GET_TENDER, payload: data }));
+}

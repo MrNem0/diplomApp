@@ -116,6 +116,11 @@ const RegistrationForm = props => {
               component={renderTextField}
               label="First Name"
             />
+            <Field
+              name="username"
+              component={renderTextField}
+              label="Username"
+            />
           </Grid>
           <Grid item xs={6}>
             <Field
@@ -155,12 +160,11 @@ const RegistrationForm = props => {
           </Grid>
           <Grid item xs={6}>
             <Field
-              name="notes"
+              name="password"
               component={renderTextField}
-              label="Notes"
-              multiline
-              rowsMax="4"
+              label="pass"
               margin="normal"
+              type="password"
             />
           </Grid>
           <Button

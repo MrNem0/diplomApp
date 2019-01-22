@@ -1,13 +1,13 @@
-import { COMMIT_TENDER } from '../constants';
+import { COMMIT_TENDER, GET_TENDER } from '../constants';
 
 const initialState = {
-  tenderInfo: {}
+  tenders: []
 };
 
 export default function tenderReducer(state = initialState, { type, payload }) {
   switch (type) {
-    case COMMIT_TENDER:
-      return { ...state, tenderInfo: { ...state.tenderInfo, payload } };
+    case GET_TENDER:
+      return { ...state, tenders: payload };
     default:
       return state;
   }

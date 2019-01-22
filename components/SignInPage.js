@@ -12,6 +12,26 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { Field, reduxForm } from 'redux-form';
+import TextField from '@material-ui/core/TextField';
+import Link from 'next/link';
+
+const renderTextField = ({
+  label,
+  input,
+  meta: { touched, invalid, error },
+  ...custom
+}) => (
+  <TextField
+    label={label}
+    placeholder={label}
+    error={touched && invalid}
+    helperText={touched && error}
+    fullWidth
+    {...input}
+    {...custom}
+  />
+);
 
 const styles = theme => ({
   main: {
@@ -22,31 +42,32 @@ const styles = theme => ({
     [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
       width: 400,
       marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+      marginRight: 'auto'
+    }
   },
   paper: {
     marginTop: theme.spacing.unit * 8,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
+      .spacing.unit * 3}px`
   },
   avatar: {
     margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit
   },
   submit: {
-    marginTop: theme.spacing.unit * 3,
-  },
+    marginTop: theme.spacing.unit * 3
+  }
 });
 
 function SignIn(props) {
-  const { classes } = props;
+  const { handleSubmit, pristine, reset, submitting, classes } = props;
 
   return (
     <main className={classes.main}>
@@ -58,14 +79,26 @@ function SignIn(props) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Email Address</InputLabel>
-            <Input id="email" name="email" autoComplete="email" autoFocus />
+            <Field
+              component={renderTextField}
+              id="username"
+              name="username"
+              autoComplete="username"
+              label="username"
+              autoFocus
+            />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
+            <Field
+              component={renderTextField}
+              name="password"
+              type="password"
+              id="password"
+              label="password"
+              autoComplete="current-password"
+            />
           </FormControl>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -75,11 +108,22 @@ function SignIn(props) {
             type="submit"
             fullWidth
             variant="contained"
+            disabled={pristine || submitting}
             color="primary"
             className={classes.submit}
           >
             Sign in
           </Button>
+          <Link href="/registration">
+            <Button
+              fullWidth
+              className={classes.submit}
+              color="secondary"
+              variant="outlined"
+            >
+              Registration
+            </Button>
+          </Link>
         </form>
       </Paper>
     </main>
@@ -87,7 +131,11 @@ function SignIn(props) {
 }
 
 SignIn.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(
+  reduxForm({
+    form: 'AuthForm'
+  })(SignIn)
+);

@@ -18,23 +18,23 @@ import asyncValidate from '../utils/asyncValidate';
 const validate = values => {
   const errors = {};
   const requiredFields = [
-    'firstName',
-    'lastName',
-    'email',
-    'favoriteColor',
-    'notes'
+    'systemClass',
+    'area',
+    'duration',
+    'numberPerformers',
+    'orgApproach',
+    'language',
+    'customer',
+    'standards',
+    'collaborators',
+    'platform',
+    'otherRequirements'
   ];
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = 'Required';
     }
   });
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = 'Invalid email address';
-  }
   return errors;
 };
 
@@ -67,8 +67,8 @@ const renderCheckbox = ({ input, label }) => (
 const radioButton = ({ input, ...rest }) => (
   <FormControl>
     <RadioGroup {...input} {...rest}>
-      <FormControlLabel value="female" control={<Radio />} label="Female" />
-      <FormControlLabel value="male" control={<Radio />} label="Male" />
+      <FormControlLabel value="true" control={<Radio />} label="Так" />
+      <FormControlLabel value="false" control={<Radio />} label="Ні" />
     </RadioGroup>
   </FormControl>
 );
@@ -88,14 +88,13 @@ const renderSelectField = ({
   ...custom
 }) => (
   <FormControl error={touched && error}>
-    <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+    <Typography variant="subtitle1">Тривалість (У місяцях)</Typography>
     <Select
       native
       {...input}
       {...custom}
       inputProps={{
-        name: 'age',
-        id: 'age-native-simple'
+        name: 'duration'
       }}
     >
       {children}
@@ -103,6 +102,8 @@ const renderSelectField = ({
     {renderFromHelper({ touched, error })}
   </FormControl>
 );
+
+const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const TenderRegistrationForm = props => {
   const { handleSubmit, pristine, reset, submitting, classes } = props;
@@ -112,52 +113,85 @@ const TenderRegistrationForm = props => {
         <Grid container spacing={24} justify="center" alignItems="center">
           <Grid item xs={6}>
             <Field
-              name="firstName"
+              name="systemClass"
               component={renderTextField}
-              label="First Name"
+              label="Клас системи (Наприклад, АСУ ТП, АІС та ін.)"
             />
           </Grid>
           <Grid item xs={6}>
             <Field
-              name="lastName"
+              name="platform"
               component={renderTextField}
-              label="Last Name"
+              label="Платформа(и) на якій буде застосовуваться додаток"
             />
           </Grid>
           <Grid item xs={6}>
-            <Field name="email" component={renderTextField} label="Email" />
+            <Field
+              name="language"
+              component={renderTextField}
+              label="Мова(и) які будуть використвуваться в розробці"
+            />
           </Grid>
           <Grid item xs={6}>
-            <Field name="sex" component={radioButton}>
-              <Radio value="male" label="male" />
-              <Radio value="female" label="female" />
+            <Field
+              name="customer"
+              component={renderTextField}
+              label="Замовник(найменування організації-замовника)"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              name="area"
+              component={renderTextField}
+              label="Прикладна область (Наприклад, військового призначення)"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              name="numberPerformers"
+              component={renderTextField}
+              label="Кількість виконавців(Кількість осіб, які беруть участь в розробці)"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              name="orgApproach"
+              component={renderTextField}
+              label="Організаційний підхід(Наприклад, тимчасовий трудовий колектив, інтегрована бригада та ін.)"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              name="standards"
+              component={renderTextField}
+              label="Застосовувані стандарти(Група застосовуваних вітчизняних і міжнародних стандартів)"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant='subtitle1'>Наявність співвиконавців</Typography>
+            <Field name="collaborators" component={radioButton}>
+              <Radio value="true" label="Так" />
+              <Radio value="false" label="Ні" />
             </Field>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <Field
               classes={classes}
-              name="favoriteColor"
+              name="duration"
               component={renderSelectField}
-              label="Favorite Color"
             >
-              <option value="" />
-              <option value="ff0000">Red</option>
-              <option value="00ff00">Green</option>
-              <option value="0000ff">Blue</option>
+              {month.map(e => (
+                <option key={e} value={e}>
+                  {e}
+                </option>
+              ))}
             </Field>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <Field
-              name="employed"
-              component={renderCheckbox}
-              label="Employed"
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <Field
-              name="notes"
+              name="otherRequirements"
               component={renderTextField}
-              label="Notes"
+              label="Інші вимоги"
               multiline
               rowsMax="4"
               margin="normal"
@@ -169,7 +203,7 @@ const TenderRegistrationForm = props => {
             fullWidth
             color="primary"
           >
-            Submit
+            Зареєструвати
           </Button>
         </Grid>
       </form>

@@ -8,9 +8,9 @@ import {
 } from '../constants';
 
 export const getQuestions = () => dispatch => {
-  const res = Axios.get('/api/quiz').then(r => r.data);
+  const res = Axios.get('/quizzes').then(r => r.data);
   return res.then(data =>
-    dispatch({ type: GET_QUESTIONS, payload: data.quiz })
+    dispatch({ type: GET_QUESTIONS, payload: data[0].quistions })
   );
 };
 

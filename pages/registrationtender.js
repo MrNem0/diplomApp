@@ -2,16 +2,18 @@ import React from 'react';
 import Router from 'next/router';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { commitTender } from '../actions/tenderActions';
 
+import Axios from 'axios';
 import Layout from '../components/Layout';
 import TenderRegistration from '../components/TenderRegistration';
 
-const TenderRegistrationPage = ({ commitTender, form }) => {
+const TenderRegistrationPage = ({ form }) => {
   const submit = e => {
     e.preventDefault();
-    commitTender(form.TenderRegistrationForm.values);
+    Axios.post('/tender/register', form.TenderRegistrationForm.values)
+      .then(r => r.data)
+      .then(d => d)
+      .catch(error => console.log(error));
     Router.replace('/tenders');
   };
 
@@ -26,11 +28,6 @@ const mapStateToProps = store => ({
   form: store.form
 });
 
-const mapDispatchToProps = dispatch => ({
-  commitTender: bindActionCreators(commitTender, dispatch)
-});
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(TenderRegistrationPage);
