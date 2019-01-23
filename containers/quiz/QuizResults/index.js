@@ -13,10 +13,14 @@ import Chart from 'react-google-charts';
 const QuizResult = ({ results }) => (
   <Card>
     <CardContent>
-      <Typography variant="h5" component="h5" align="center">
+      <Typography variant="headline" component="h5" align="center">
         Ваш результат
       </Typography>
+      <Typography variant="subtitle1" align="center">
+        Ви набрали: {results.correct}
+      </Typography>
       <Chart
+        style={{ marginLeft: '30px' }}
         width="500px"
         height="300px"
         chartType="PieChart"
@@ -50,6 +54,30 @@ const QuizResult = ({ results }) => (
         }}
         rootProps={{ 'data-testid': '4' }}
       />
+      <Divider />
+      <Typography variant='headline' align="center">
+        Наші рекомендації
+      </Typography>
+      <Typography variant='subtitle1' gutterBottom paragraph>
+          Грунтуючись на ваших результатах представлених раніше, ми могли б сказати,
+        що ви виконуєте майже всі процеси в ті області якій працюєтею.
+          Ми рекомендуємо процес поліпшення із застосуванняи аналізу та підставі
+        результатів встановити нові цілі щодо вдосканалення процесів.
+        <ul>
+          <li>Визначити всі зони робочих продуктів</li>
+          <li>Спец знання (напр. Оцінювачі, планувальники), обладнання</li>
+          <li>Планування бюджету, обладнання, програмнного забепечення та людських ресурсів, коли ваші проекти
+          починаються і документувати ці дані
+          </li>
+          <li>Поліпшення процесів для RSKM - "Управління ризиками" області процесу</li>
+          <li>Розробка планів щодо зниження ризику тільки для найважливіших ризиків проекту. Включни
+          параметри обробки і список для виявлених ризиків
+          </li>
+          <li>Створення організаційної політики для визначення статегії управління ризиками та виявлення
+          аналізу та знижиння ризиків
+          </li>
+        </ul>
+      </Typography>
       <Divider />
       <Link href="/">
         <Button fullWidth>Home</Button>

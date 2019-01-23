@@ -114,7 +114,7 @@ function SignIn(props) {
           >
             Sign in
           </Button>
-          <Link href="/registration">
+          <Link href="/register">
             <Button
               fullWidth
               className={classes.submit}

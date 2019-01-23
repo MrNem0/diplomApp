@@ -111,6 +111,13 @@ const TenderRegistrationForm = props => {
     <Paper style={{ padding: '20px' }}>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={24} justify="center" alignItems="center">
+          <Grid item xs={12}>
+            <Field
+              name="tenderName"
+              component={renderTextField}
+              label="Назва тендеру"
+            />
+          </Grid>
           <Grid item xs={6}>
             <Field
               name="systemClass"
@@ -168,7 +175,9 @@ const TenderRegistrationForm = props => {
             />
           </Grid>
           <Grid item xs={3}>
-            <Typography variant='subtitle1'>Наявність співвиконавців</Typography>
+            <Typography variant="subtitle1">
+              Наявність співвиконавців
+            </Typography>
             <Field name="collaborators" component={radioButton}>
               <Radio value="true" label="Так" />
               <Radio value="false" label="Ні" />
@@ -194,6 +203,14 @@ const TenderRegistrationForm = props => {
               label="Інші вимоги"
               multiline
               rowsMax="4"
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              name="previewImage"
+              component={renderTextField}
+              label="Посилання на картинку(Якщо не має пропустіть це поле)"
               margin="normal"
             />
           </Grid>

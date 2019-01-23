@@ -1,13 +1,11 @@
 import React from 'react';
 
-// import Profile from '../components/ProfilePage/Profile';
 import Layout from '../components/Layout';
-import Timer from '../components/Timer';
+import Home from '../containers/home/Home';
 
 const Index = () => (
   <Layout>
-    <div>Hello WORLD</div>
-    <Timer />
+    <Home />
   </Layout>
 );
 
